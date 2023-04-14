@@ -1,0 +1,26 @@
+{
+  "name": "MultiCompass",
+  "version": "1.0.0",
+  "description": "The MultiCompass library is a platformIO library for Arduino that provides an interface for communicating with compass sensors like the HMC5883L, allowing users to read raw data, calibrate, and configure the sensors.",
+  "keywords": "arduino, esp32, compass, sensors, HMC5883L, raw, calibration, configuration, interface",
+  "repository":
+  {
+    "type": "git",
+    "url": ""
+  },
+  "authors":
+  [
+    {
+      "name": "Malte Hering",
+      "email": "malte.hering@outlook.de",
+      "url": ""
+    }
+  ],
+  "license": "Apache-2.0",
+  "homepage": "https://www.helloworld.org/",
+  "dependencies": {
+    
+  },
+  "frameworks": "arduino",
+  "platforms": "*"
+}
