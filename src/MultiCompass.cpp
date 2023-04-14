@@ -186,10 +186,7 @@ uint8_t MultiCompass::readByte(uint8_t reg)
 #else
     mywire->send(reg);
 #endif
-    Serial.print("adress:");
-    Serial.print(adress);
-    Serial.print("Result:");
-    Serial.println(mywire->endTransmission()); // Print the transmission result to Serial monitor.
+   mywire->endTransmission(); // End the transmission
 
     mywire->requestFrom(adress, (uint8_t)1); // Request one byte from the given address.
     while (mywire->available() == 0)         // Wait until data is available to be read.

@@ -43,35 +43,37 @@ This sketch assumes that you have an HMC5883L compass sensor connected to your A
 Congratulations, you have successfully run the provided sketch and calibrated the compass! You can now use the compass data in your own projects.
 
 */
-
 #include <Arduino.h> // Include the Arduino core library
-#include <Wire.h> // Include the Wire library for I2C communication
+#include <Wire.h>    // Include the Wire library for I2C communication
 
 #include "MultiCompassHMC5883L.h" // Include the custom MultiCompassHMC5883L library
 
-TwoWire I2C1 = TwoWire(0); // Create a TwoWire object named I2C1 using the 0th I2C bus
+TwoWire I2C1 = TwoWire(0);           // Create a TwoWire object named I2C1 using the 0th I2C bus
 MultiCompassHMC5883L compass(&I2C1); // Create a MultiCompassHMC5883L object named compass, using the I2C1 bus
 
 void setup()
 {
-  Serial.begin(115200); // Initialize the serial communication at 115200 baud rate
-  delay(1000); // Wait for 1 second to allow the serial communication to initialize
+  Serial.begin(115200);    // Initialize the serial communication at 115200 baud rate
+  delay(1000);             // Wait for 1 second to allow the serial communication to initialize
   Serial.println("Start"); // Print "Start" to the serial monitor
 
   Serial.print("Mode:"); // Print "Mode:" to the serial monitor
-  I2C1.begin(26, 25); // Initialize the I2C communication with SDA pin at 26 and SCL pin at 25
+  I2C1.begin(26, 25);    // Initialize the I2C communication with SDA pin at 26 and SCL pin at 25
 
-  compass.setMode(HMC5883L_Mode::HMC5883L_MODE_CONTINOUS); // Set the HMC5883L compass sensor mode to continuous measurement mode
+  compass.setMode(HMC5883L_Mode::HMC5883L_MODE_CONTINOUS);          // Set the HMC5883L compass sensor mode to continuous measurement mode
   compass.setAveragedSamples(HMC5883L_Samples::HMC5883L_SAMPLES_8); // Set the number of averaged samples to 8
 
-  CompassSetting settings = {}; // Create a new CompassSetting object named settings
-  settings.minX = 0; // Set the minimum X value of the calibration settings to 0
-  settings.minY = 0; // Set the minimum Y value of the calibration settings to 0
-  settings.minZ = 0; // Set the minimum Z value of the calibration settings to 0
-  settings.maxX = 0; // Set the maximum X value of the calibration settings to 0
-  settings.maxY = 0; // Set the maximum Y value of the calibration settings to 0
-  settings.maxZ = 0; // Set the maximum Z value of the calibration settings to 0
-  compass.setCalibration(&settings); // Set the calibration settings for the compass sensor
+  // Insert the generated calibration here.
+  /*
+  CompassSetting settings = {};
+  settings.minX = 000;
+  settings.minY = 000;
+  settings.minZ = 000;
+  settings.maxX = 000;
+  settings.maxY = 000;
+  settings.maxZ = 000;
+  compass.setCalibration(&settings);
+  */
 }
 
 // Define a boolean variable to keep track of the old calibration status
@@ -113,16 +115,17 @@ void loop()
     Serial.print(data.heading / (2 * PI) * 360);
 
     // Check if this is the first successful calibration
-    if (!oldCalibration) {
+    if (!oldCalibration)
+    {
       // If it is, print the calibration settings for later use
       Serial.println("Copy this calibration at the bottom of the setup:");
       Serial.println("CompassSetting settings = {};");
-      Serial.println("settings.minX = " + String(compass.settings.minX) +";");
-      Serial.println("settings.minY = " + String(compass.settings.minY) +";");
-      Serial.println("settings.minZ = " + String(compass.settings.minZ) +";");
-      Serial.println("settings.maxX = " + String(compass.settings.maxX) +";");
-      Serial.println("settings.maxY = " + String(compass.settings.maxY) +";");
-      Serial.println("settings.maxZ = " + String(compass.settings.maxZ) +";");
+      Serial.println("settings.minX = " + String(compass.settings.minX) + ";");
+      Serial.println("settings.minY = " + String(compass.settings.minY) + ";");
+      Serial.println("settings.minZ = " + String(compass.settings.minZ) + ";");
+      Serial.println("settings.maxX = " + String(compass.settings.maxX) + ";");
+      Serial.println("settings.maxY = " + String(compass.settings.maxY) + ";");
+      Serial.println("settings.maxZ = " + String(compass.settings.maxZ) + ";");
       Serial.println("compass.setCalibration(&settings);");
     }
 
