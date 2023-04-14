@@ -6,18 +6,18 @@
   "repository":
   {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/Multie/MultiCompass"
   },
   "authors":
   [
     {
       "name": "Malte Hering",
       "email": "malte.hering@outlook.de",
-      "url": ""
+      "url": "https://github.com/Multie"
     }
   ],
   "license": "Apache-2.0",
-  "homepage": "https://www.helloworld.org/",
+  "homepage": "https://github.com/Multie/MultiCompass",
   "dependencies": {
     
   },
