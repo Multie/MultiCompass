@@ -9,14 +9,15 @@ The MultiCompass library is a platformIO library for Arduino that provides an in
 Installation
 ------------
 
-To install this library, simply add `MultiCompass` to your `platformio.ini` dependencies:
+To install this library, simply add `multie/MultiCompass` to your `platformio.ini` dependencies:
 
 ```` ini
 [env:your_environment] 
-platform = your_platform 
+platform = your_platform
 board = your_board 
 ... 
-lib_deps = MultiCompass`
+lib_deps = 
+    multie/MultiCompass
 ````
 Usage
 -----
